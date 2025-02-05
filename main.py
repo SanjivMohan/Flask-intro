@@ -43,3 +43,26 @@ def get_students():
                 result.append(student)  # add match student to the result
         return jsonify(result)  # return filtered set if parameter is supplied
     return jsonify(data)  # return entire dataset if no parameter supplied
+
+
+#Exercise 2
+@app.route('/add/<int:a>/<int:b>')
+def add(a, b):
+    return f"Result of {a} + {b} = {a + b}"
+
+@app.route('/subtract/<int:a>/<int:b>')
+def subtract(a, b):
+    return f"Result of {a} - {b} = {a - b}"
+
+@app.route('/multiply/<int:a>/<int:b>')
+def multiply(a, b):
+    return f"Result of {a} * {b} = {a * b}"
+
+@app.route('/divide/<int:a>/<int:b>')
+def divide(a, b):
+    if b == 0:
+        return "Error: Division by zero"
+    return f"Result of {a} / {b} = {a / b}"
+
+if __name__ == '__main__':
+    app.run(debug=True)
